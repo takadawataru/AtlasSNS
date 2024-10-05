@@ -70,30 +70,32 @@ class RegisterController extends Controller
         ]);
     }
 
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
+    //画面表示
+    public function registerForm(){
+         return view("auth.register");
+     }
 
     public function register(Request $request)
     {
         $request->validate([
             'username'=>'string | required | between:2,12',
-            'mail'=>'string | required | between:5,40 | email | unique:users,mail',
-            'password'=>'string |required | confirmed | alpha_num',
+            'mail'=>'required | between:5,40 | email | unique:users,mail',
+            'password'=>'required | confirmed | alpha_num',
         ]);
 
+        //入力した値の取得
         $username = $request->input('username');
-        $name = $request->input('mail');
+        $mail = $request->input('mail');
         $password = $request->input('password');
 
+        //送信後のデータの格納
         User::create([
             'username'=>$username,
             'mail'=>$mail,
             'password'=>$password,
         ]);
 
-        return redirect('auth.added');
+        return redirect('/added');
     }
 
 
