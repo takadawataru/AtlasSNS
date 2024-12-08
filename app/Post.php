@@ -15,6 +15,9 @@ class Post extends Model
     return $this->belongsTo('App\User');//user.phpとリレーション
 }
 
+public function posts(){
+  return $this->hasMany('App\Models\Post');
+}
 
 
 }

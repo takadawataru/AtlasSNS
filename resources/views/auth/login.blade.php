@@ -4,6 +4,9 @@
 
 {!! Form::open() !!}
 
+
+<main>
+
 <p>AtlasSNSへようこそ</p>
 
 {{ Form::label('e-mail') }}
@@ -17,6 +20,6 @@
 
 <p><a href="/register">新規ユーザーの方はこちら</a></p>
 
-
+</main>
 
 @endsection

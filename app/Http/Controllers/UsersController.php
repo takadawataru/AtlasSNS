@@ -5,13 +5,14 @@ use DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class UsersController extends Controller
 {
     //
     public function profile(){
          $user = Auth::user();
+         //dd($user);
         return view('users.profile',[
             'user'=>$user
         ]);
@@ -37,7 +38,16 @@ class UsersController extends Controller
 
     public function user_update(Request $request)
     {
-        $id = \Auth::user()->id;
+         $request->validate([
+            'name'=>'string | required | between:2,12',
+            'mail'=>'required | between:5,40 | email |unique:users,mail,' . Auth::id() . ',id',
+            'password'=>'required | confirmed | alpha_num',
+            'bio'=>'max:150',
+            'icon'=>'file | image | mimes:jpg,png,bmp,gif,svg',
+        ]);
+
+         //入力した値の取得
+        $id = Auth::user()->id;
         $name = $request->input('name');
         $mail = $request->input('mail');
         $password = $request->input('password');

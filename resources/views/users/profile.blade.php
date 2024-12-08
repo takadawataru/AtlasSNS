@@ -16,7 +16,7 @@
      <input type="password" value="" class="input" name="password_confirmation">
     <br>
     bio:<br>
-   <textarea type="text" name="bio" rows="2" value="{{ $user->bio }}" class="input"></textarea>
+   <textarea type="text" name="bio" rows="2" value="{{ $user->bio }}" class="input">{{ $user->bio }}</textarea>
 
    icon image:<br>
         <input type="file" name="images">

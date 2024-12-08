@@ -6,7 +6,7 @@ body {}
 
 /* header */
 header {
-    background: #186AC9;
+    background-color: #0067c6;
 }
 
 /* main content */
@@ -26,7 +26,8 @@ header {
 
 .content {
     margin: 0 auto;
-    padding: 40px;
+    padding: 10px;
+    background-color: #0656cf
 }
 
 /* モーダル */
@@ -124,4 +125,36 @@ header {
 .accordion-container {
     width: 300px;
     margin: 1.875em auto;
+}
+
+.btn-btn-success-pull-right-blue {
+    color: #fff;
+    background-color: #0656cf;
+
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 0.7rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+
+}
+
+.username {
+    display: flex;
+    flex-flow: column;
+
 }
