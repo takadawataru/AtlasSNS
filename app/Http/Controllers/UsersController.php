@@ -118,6 +118,7 @@ class UsersController extends Controller
 
     //ログアウト
     public function logout(){
-         return redirect('/login');
+        Auth::logout();
+        return redirect('/login');
         }
 }

@@ -1,25 +1,87 @@
 @charset "UTF-8";
 
 html {
-    height: 100%;
+    height: auto;
 }
 
 body {
-    height: 100%;
+    height: auto;
     background: linear-gradient(to bottom, #186AC9 0%, yellow 100%);
 }
 
 
 
 main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    display: block;
+    margin-top: 20%;
+    margin-left: 50%;
     transform: translate(-50%, -50%);
-
-    padding: 100px 3%;
+    padding: 30px 2%;
     background: rgba(0, 0, 0, 0.4);
     color: #fff;
     text-align: center;
-    width: 200px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+main_register {
+
+    display: block;
+    margin-top: 25%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 30px 2%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    width: 300px;
+    border-radius: 10px;
+}
+
+main_added {
+
+    display: block;
+    margin-top: 15%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 30px 2%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.login_text {
+    padding-right: 110px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.login_text_2 {
+    padding-right: 120px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.login_text_3 {
+    padding-right: 150px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.login_text_pass {
+    padding-right: 140px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.login_group {
+    margin-bottom: 20px;
+}
+
+link_user {
+    color: white;
 }

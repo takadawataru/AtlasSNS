@@ -10,35 +10,40 @@
 
 <div class="container">
         {!! Form::open(['url' => 'post/create']) !!}
-        <div class="form-group">
-            {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
-            <!---->
-        </div>
-        <button type="submit" class="btn btn-success pull-right">追加</button>
+        <tr><td><img src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td></tr>
+            <tr class="form-group"><td>
+                <textarea  name="newPost" class="tarea" placeholder="投稿内容を入力してください"></textarea></textarea></td>
+                <!---->
+            </tr>
+                <td><tr><button type="submit" class="post_btn"><img class="post_icon" src="{{asset('images/post.png')}}"></button></tr></td>
         {!! Form::close() !!}
 </div>
 
+<hr class="cp_hr01" />
 
 
     <div>
-        <h2 class="page-header">投稿一覧</h2>
-        <table class='table table-hover'>
+        <table>
             @foreach ($posts as $posts)
+            <tbody class="top">
                 <tr>
-                    <td><img src="{{asset('storage/'.$posts->user->images)}}" alt=""></td>
+                    <td><img  src="{{asset('storage/'.$posts->user->images)}}" alt=""></td>
+                </tr>
+                <tr class="post">
+                    <td>{{ $posts->user->username}}</td><!--リレーションでuser.phpのusernameを置くことで情報が取得できる。 -->
+                    <td class="posts">{!! nl2br(e($posts->post)) !!}</td>
 
-                    <div class="post">
-                            <td>{{ $posts->post }}</td>
-                            <td>{{ $posts->user->username}}</td><!--リレーションでuser.phpのusernameを置くことで情報が取得できる。 -->
-                    </div>
-
-                    <div class="content">
-                         <td>{{ $posts->created_at }}</td>
-                         <td><a class="js-modal-open" href="" post="{{ $posts->post }}" post_id="{{ $posts->id }}">編集</a></td>
-                         <td><a class="btn btn-danger" href="/post/{{$posts->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a></td>
-                    </div>
                 </tr>
 
+                <tr class="content">
+                    <td class="content_at">{{ $posts->created_at->format('Y-m-d H:i') }}</td>
+
+                    <td><a class="js-modal-open" href="" post="{{ $posts->post }}" post_id="{{ $posts->id }}"><img class="icon" src="{{asset('images/edit.png')}}"></a></td>
+
+                    <td><button class="btn-dust" href="/post/2/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"></button></td>
+                </tr>
+
+            </tbody>
             @endforeach
         </table>
     </div>

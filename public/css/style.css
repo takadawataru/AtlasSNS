@@ -2,7 +2,13 @@
 
 html {}
 
-body {}
+body {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
 
 /* header */
 header {
@@ -16,18 +22,25 @@ header {
 }
 
 #container {
+
     flex: 0 0 80%;
+    justify-content: space-between;
+
 }
 
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    padding-top: 30px;
 }
 
 .content {
-    margin: 0 auto;
     padding: 10px;
-    background-color: #0656cf
+}
+
+.other_content {
+    padding: 10px;
+    width: 20%;
 }
 
 /* モーダル */
@@ -58,8 +71,8 @@ header {
 
 /* アコーディオン */
 .accordion-container {
-    position: right 20px;
-    width: 100%;
+    position: absolute;
+    right: 0px;
     border: 1px solid #0079c1;
     border-top: none;
     outline: 0;
@@ -74,14 +87,13 @@ header {
     font-size: 1.25em;
     font-weight: normal;
     color: #fff;
-    background: #000;
     cursor: pointer;
+    width: 80%;
 }
 
 .accordion-container .accordion-title:hover,
 .accordion-container .accordion-title:active,
 .accordion-container .content-entry.open .accordion-title {
-    background-color: #00aaa7;
     color: white;
 }
 
@@ -118,18 +130,20 @@ header {
 
 .accordion-content {
     display: none;
-    padding-left: 2.3125em;
+    font-size: 25px;
+    text-align: center;
+    background-color: white;
 }
+
 
 /* CSS for CodePen */
 .accordion-container {
-    width: 300px;
-    margin: 1.875em auto;
+    width: 20%;
+    margin: 2.1em auto;
 }
 
 .btn-btn-success-pull-right-blue {
     color: #fff;
-    background-color: #0656cf;
 
     font-size: 1rem;
     font-weight: 700;
@@ -153,8 +167,206 @@ header {
 
 }
 
+.side_text {
+    padding: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.side_text:active {
+    background-color: #0067c6;
+}
+
+.side_text:hover {
+    background-color: #0067c6;
+    color: white;
+}
+
+.side_color {
+    color: gray;
+}
+
+.side_color:active {
+    color: white;
+}
+
+.side_color:hover {
+    color: white;
+}
+
 .username {
     display: flex;
     flex-flow: column;
 
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #e0e0e0;
+    padding-left: 40px;
+    margin-top: 10px;
+}
+
+.other_top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #e0e0e0;
+    padding-left: 150px;
+    margin-top: 10px;
+}
+
+.search_top {
+    display: flex;
+    padding-left: 250px;
+    margin-top: 30px;
+}
+
+.search_box {
+    padding: auto;
+}
+
+.search_result {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.search_icon {
+    width: 50px;
+    position: absolute;
+    top: 95px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.content_at {
+    display: block;
+}
+
+.other_content_at {
+    display: block;
+    width: 30%;
+}
+
+.post {
+    display: grid;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.search_post {
+    margin-right: 200px;
+    padding: 20px;
+}
+
+.posts {
+    display: block;
+    white-space: normal;
+}
+
+.icon {
+    margin: auto;
+    display: block;
+    width: 35%;
+}
+
+.post_icon {
+
+    width: 50px;
+}
+
+.post_btn {
+    padding: 0;
+    border: none;
+}
+
+.tarea {
+    border: none;
+    width: 70%;
+    height: 70PX;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0.5em 0;
+    line-height: 1.5;
+}
+
+.btn-dust {
+    margin: auto;
+    display: block;
+    width: 100px;
+    height: 35px;
+    border: none;
+    background: url(../images/trash.png) no-repeat;
+    background-size: 35%;
+}
+
+.btn-dust:hover {
+    margin: auto;
+    display: block;
+    width: 100px;
+    height: 35px;
+    background: url(../images/trash-h.png) no-repeat;
+    background-size: 35%;
+}
+
+.cp_hr01 {
+    border-width: 5px 0 0 0;
+    border-style: solid;
+    border-color: #8e8e8e;
+}
+
+.follow_group {
+    display: flex;
+    margin-left: 60px;
+    padding-top: 30px;
+}
+
+.follow_icon {
+    margin-left: 50px;
+}
+
+.header_icon {
+    height: 64px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.atlas_icon {
+    width: 100px;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+
+
+td {
+    padding-bottom: 10px;
+    border: none;
+
+}
+
+.label_name {
+    width: 30%;
+    font-weight: bold;
+}
+
+.input {
+    width: 50%;
+}
+
+.profile {
+    margin-bottom: 30px;
+}
+
+.label_file {
+    border: solid 1px;
+    padding: 30px 118px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.SocialNetworkService {
+    font-size: 30px;
+    margin-left: 37%;
 }

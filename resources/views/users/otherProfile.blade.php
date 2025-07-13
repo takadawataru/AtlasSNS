@@ -1,59 +1,57 @@
 @extends('layouts.login')
 
 @section('content')
-<p>他ユーザーのプロフィール</p>
 
- <div>
-        <table class='table table-hover'>
-            <tr>
-                <th></th>
-                <th>name</th>
-                <th>bio</th>
+<div style="display:flex;padding-left:100px;padding-top: 30px;">
+    <div><img src="{{asset('storage/'.$user->images)}}" alt=""></div>
+    <table class='table table-hover'>
+        <tr>
+            <th>name</th>
+            <td>{{ $user->username}}</td>
+        </tr>
 
-            </tr>
-
-            <tr>
-                <td><img src="{{asset('storage/'.$user->images)}}" alt=""></td>
-                <td>{{ $user->username}}</td>
-                <td>{{ $user->bio}}</td>
-            </tr>
-                  <div class="content">
-        </table>
-
- <div>
+        <tr >
+            <th>bio</th>
+            <td>{{ $user->bio}}</td>
+        </tr>
+    </table>
+    <div class="other_content">
         @if (Auth::user()->isFollowing($user->id))
-    <form action="{{ route('un_follow', ['user' => $user->id]) }}" method="POST">
-         {{ csrf_field() }}
-        <button type="submit" class="btn btn-danger">フォロー解除</button>
-    </form>
-@else
-    <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
-        {{ csrf_field() }}
-        <button type="submit" class="btn btn-primary">フォローする</button>
-    </form>
-@endif
-
-
+            <form action="{{ route('un_follow', ['user' => $user->id]) }}" method="POST">
+            {{ csrf_field() }}
+                <button type="submit" class="btn btn-danger">フォロー解除</button>
+            </form>
+        @else
+            <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
+            {{ csrf_field() }}
+                <button type="submit" class="btn btn-primary">フォローする</button>
+            </form>
+        @endif
+    </div>
 </div>
 
-      </div>
+<hr class="cp_hr01" />
 
 
-       <div>
-        <h2 class="page-header">投稿一覧</h2>
-        <table class='table table-hover'>
+<div style="display:flex;border-bottom: 2px solid #e0e0e0;">
+    <table class='table table-hover'>
+        @foreach ($posts as $posts)
+        <tbody class="other_top">
             <tr>
-                <th></th>
-                <th>投稿内容</th>
+                <td><img  src="{{asset('storage/'.$posts->user->images)}}" alt=""></td>
             </tr>
-                 @foreach ($posts as $posts)
-            <tr>
-                <td><img src="{{asset('storage/'.$user->images)}}" alt=""></td>
-                <td>{{ $posts->post }}</td>
+
+            <tr class="post">
+                <td>{{ $user->username}}</td>
+                <td class="posts">{{ $posts->post }}</td>
             </tr>
-                 @endforeach
-        </table>
-    </div>
+            <tr class="content">
+                <td class="content_at">{{ $posts->created_at->format('Y-m-d H:i') }}</td>
+            </tr>
+        </tbody>
+        @endforeach
+    </table>
+</div>
 
 
 @endsection
