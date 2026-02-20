@@ -92,7 +92,7 @@ class RegisterController extends Controller
         User::create([
             'username'=>$username,
             'mail'=>$mail,
-            'password'=>$password,
+            'password'=>bcrypt($password),
         ]);
 
         $user = $request->input('username');

@@ -50,18 +50,18 @@ class UsersController extends Controller
         $id = Auth::user()->id;
         $name = $request->input('name');
         $mail = $request->input('mail');
-        $password = $request->input('password');
+        $password = Hash::make($request->input('password'));
         $bio = $request->input('bio');
           $filename=$request->images->getClientOriginalName();  //('')にフォルダ名を指定
-     $icon=$request->images->storeAs('user_icon',$filename,'public');
-         \DB::table('users')
-         ->where('id',$id)
-         ->update(
-                 ['username' => $name,
-                   'mail' => $mail,
-                   'password' => bcrypt($password),
-                   'bio' => $bio,
-                   'images' =>$icon
+        $icon=$request->images->storeAs('user_icon',$filename,'public');
+        \DB::table('users')
+        ->where('id',$id)
+        ->update(
+                ['username' => $name,
+                    'mail' => $mail,
+                    'password' =>$password,
+                    'bio' => $bio,
+                    'images' =>$icon
                 ]);
         return redirect('/top');
     }
