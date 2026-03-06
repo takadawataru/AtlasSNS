@@ -22,7 +22,11 @@
 @foreach ($users as $user)
     <tbody class="search_top">
         <tr>
+            @if($user->images!='icon1.png')
             <td><img src="{{asset('storage/'.$user->images)}}" alt=""></td>
+            @else
+            <td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+            @endif
         </tr>
         <tr class="search_post">
             <td style="font-weight:bold";>{{$user ->username }}</td>

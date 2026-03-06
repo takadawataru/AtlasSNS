@@ -10,7 +10,12 @@
 
 <div class="container">
         {!! Form::open(['url' => 'post/create']) !!}
-        <tr><td><img src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td></tr>
+
+        @if(Auth::user()->images!='icon1.png')
+            <td></td><img src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+            @else
+            <td></td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+            @endif
             <tr class="form-group"><td>
                 <textarea  name="newPost" class="tarea" placeholder="投稿内容を入力してください"></textarea></textarea></td>
                 <!---->
@@ -38,9 +43,11 @@
                 <tr class="content">
                     <td class="content_at">{{ $posts->created_at->format('Y-m-d H:i') }}</td>
 
+                @if (Auth::user()->id== $posts->user_id)
                     <td><a class="js-modal-open" href="" post="{{ $posts->post }}" post_id="{{ $posts->id }}"><img class="icon" src="{{asset('images/edit.png')}}"></a></td>
 
                     <td><button class="btn-dust" href="/post/2/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"></button></td>
+                @endif
                 </tr>
 
             </tbody>
@@ -58,10 +65,9 @@
             @csrf
                 <textarea name="upPost" class="modal_post"></textarea>
                 <input type="hidden" name="id" class="modal_id" value="">
-                <input type="submit" value="更新">
+                <button input type="submit" value="更新"><img src="{{asset('images/edit.png')}}" alt=""> </button>
                 {{ csrf_field() }}
            </form>
-           <a class="js-modal-close" href="">閉じる</a>
         </div>
     </div>
 

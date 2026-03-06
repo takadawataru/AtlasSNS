@@ -18,7 +18,9 @@ class PostsController extends Controller
      // ->select('posts.user_id','users.id')
     //  ->join('users','id', '=', 'posts', 'id')
     //  ->get();
-    $posts = Post::get();
+    $id = \Auth::user()->id;
+    $follow_id =\Auth::user()->follows()->pluck('followed_id')->toArray();
+    $posts = Post::whereIn('user_id',array_merge($follow_id,[$id]))->orderBy('created_at','desc')->get();
         return view('posts.index',[
             'posts'=> $posts
         ]);

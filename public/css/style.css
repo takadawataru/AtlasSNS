@@ -282,6 +282,7 @@ header {
 }
 
 .tarea {
+    resize: none;
     border: none;
     width: 70%;
     height: 70PX;
@@ -366,7 +367,20 @@ td {
     transition: .3s;
 }
 
-.SocialNetworkService {
-    font-size: 30px;
-    margin-left: 37%;
+.modal textarea {
+    height: 10em;
+    width: 100%;
+    resize: none;
+}
+
+.modal__content button {
+    height: 40px;
+    width: 40px;
+    margin-left: 45%;
+    border: none;
+    background-color: #fff;
+}
+
+.modal__content img {
+    width: 100%;
 }
