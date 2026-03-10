@@ -33,6 +33,10 @@ class PostsController extends Controller
 
  public function create(Request $request)
     {
+        $request->validate([
+            'newPost'=>'string | required | between:1,150',
+        ]);
+
         $post = $request->input('newPost');
         $user_id = \Auth::user()->id;
         \DB::table('posts')->insert([

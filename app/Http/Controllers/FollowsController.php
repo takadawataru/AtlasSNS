@@ -22,14 +22,14 @@ public function followList_icon(){
     //
     public function followList(){
          $following_id =Auth::user()->follows()->pluck('followed_id');//フォローしているユーザーid取得
-        $posts= Post::with('user')->whereIn('user_id' , $following_id)->get();//idで投稿内容取得
+        $posts= Post::with('user')->whereIn('user_id' , $following_id)->orderBy('created_at','desc')->get();//idで投稿内容取得
         return view('follows.followList',compact('posts'));
     }
 
 
     public function followerList(){
-       $following_id =Auth::user()->follows()->pluck('following_id');//フォローされているユーザーid取得
-        $posts= Post::with('user')->whereIn('user_id' , $following_id)->get();//idで投稿内容取得
+       $following_id =Auth::user()->followers()->pluck('following_id');//フォローされているユーザーid取得
+        $posts= Post::with('user')->whereIn('user_id' , $following_id)->orderBy('created_at','desc')->get();//idで投稿内容取得
         return view('follows.followerList',compact('posts'));
     }
 

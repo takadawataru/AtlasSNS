@@ -4,6 +4,16 @@
 
 {!! Form::open(['url' => '/register']) !!}
 
+@if($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+    @endif
+
 <main_register>
 
 <h2>新規ユーザー登録</h2>

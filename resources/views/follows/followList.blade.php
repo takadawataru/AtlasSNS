@@ -17,10 +17,11 @@
 <table class='table table-hover'>
   @foreach($posts as $post)
     <tbody class="top">
-
-      <tr>
-        <td><a href="/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
-      </tr>
+      @if(Auth::user()->images!='icon1.png')
+            <td><img src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+            @else
+            <td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+            @endif
       <tr class="post" >
         <td>{{ $post->user->username}}</td>
         <td>{!! nl2br(e($post->post)) !!}</td>

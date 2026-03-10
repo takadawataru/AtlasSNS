@@ -19,7 +19,11 @@
     <tbody class="top">
 
       <tr>
-        <td><a href="/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
+        @if(Auth::user()->images!='icon1.png')
+          <td><a href="/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
+        @else
+          td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+        @endif
       </tr>
       <tr class="post" >
         <td>{{ $post->user->username}}</td>

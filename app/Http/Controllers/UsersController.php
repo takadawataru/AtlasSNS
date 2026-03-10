@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use Auth;
+use Hash;
 
 class UsersController extends Controller
 {
@@ -27,7 +28,7 @@ class UsersController extends Controller
     }
 
     public function search(){
-         $users = User::get();
+         $users = User::get()->except(auth::user()->id);
 
         return view('users.search',[
             'users'=> $users
@@ -52,8 +53,10 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = Hash::make($request->input('password'));
         $bio = $request->input('bio');
-          $filename=$request->images->getClientOriginalName();  //('')にフォルダ名を指定
-        $icon=$request->images->storeAs('user_icon',$filename,'public');
+        if($request->hasFile('images')){
+                $filename=$request->images->getClientOriginalName();  //('')にフォルダ名を指定
+        $icon=$request->images->storeAs('user_icon',$filename,'public');}
+        $icon=auth::user()->images;
         \DB::table('users')
         ->where('id',$id)
         ->update(
@@ -73,12 +76,12 @@ class UsersController extends Controller
 
      public function index(Request $request){
 
-        $query = User::query();
+        $users = User::query()->where('id','!=',auth::user()->id);
          $search = $request->input('username');
 
           if (!empty($search)) {
             $query->where('username', 'LIKE', "%{$search}%");
-          $users = $query->get();
+          $users = $query->get()->except(auth::user()->id);
           }
             return view('users.search',[  //データの送り先の指定　第一引数
                 'users'=> $users ,    //分かりやすい表示に置き換える

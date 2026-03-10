@@ -2,7 +2,19 @@
 
 @section('content')
 
+@if($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+    @endif
+
+
 <div style="padding-left:200px;display:flex;width:90%;padding-top: 50px;">
+
 
 <img src="{{asset('storage/'.Auth::user()->images)}}" alt="" style="width:64px;height:64px; padding:10px;margin-right:20px;">
 
