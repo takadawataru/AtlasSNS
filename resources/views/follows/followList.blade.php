@@ -22,9 +22,9 @@
   @foreach($posts as $post)
     <tbody class="top">
       @if($post->user->images!='icon1.png')
-            <td><img src="{{asset('storage/'.$post->user->images)}}" alt=""></td>
+            <td><img class="top_icon" src="{{asset('storage/'.$post->user->images)}}" alt=""></td>
             @else
-            <td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+            <td><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
             @endif
       <tr class="post" >
         <td>{{ $post->user->username}}</td>

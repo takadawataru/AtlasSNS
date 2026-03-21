@@ -56,7 +56,7 @@ class UsersController extends Controller
         if($request->hasFile('images')){
                 $filename=$request->images->getClientOriginalName();  //('')にフォルダ名を指定
         $icon=$request->images->storeAs('user_icon',$filename,'public');}
-        $icon=auth::user()->images;
+
         \DB::table('users')
         ->where('id',$id)
         ->update(

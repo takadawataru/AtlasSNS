@@ -24,9 +24,9 @@
 
       <tr>
         @if($post->user->images!='icon1.png')
-          <td><a href="/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
+          <td><a href="/otherProfile"><img  class="top_icon" src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
         @else
-          <td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+          <td><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
         @endif
       </tr>
       <tr class="post" >
