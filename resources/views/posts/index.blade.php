@@ -41,8 +41,8 @@
             @foreach ($posts as $posts)
             <tbody class="top">
                 <tr>
-                @if(Auth::user()->images!='icon1.png')
-                    <td><img class="top_icon" src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+                @if($posts->user->images!='icon1.png')
+                    <td><img class="top_icon" src="{{asset('storage/'.$posts->user->images)}}" alt=""></td>
                 @else
                     <td><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
                 @endif
