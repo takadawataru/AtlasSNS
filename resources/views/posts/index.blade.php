@@ -21,9 +21,9 @@
         {!! Form::open(['url' => 'post/create']) !!}
 
         @if(Auth::user()->images!='icon1.png')
-            <td></td><img src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+            <td></td><img class="top_icon" src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
             @else
-            <td></td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+            <td></td><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
             @endif
             <tr class="form-group"><td>
                 <textarea  name="newPost" class="tarea" placeholder="投稿内容を入力してください"></textarea></textarea></td>
@@ -37,16 +37,20 @@
 
 
     <div>
-        <table>
+        <table >
             @foreach ($posts as $posts)
             <tbody class="top">
                 <tr>
-                    <td><img  src="{{asset('storage/'.$posts->user->images)}}" alt=""></td>
+                @if(Auth::user()->images!='icon1.png')
+                    <td><img class="top_icon" src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+                @else
+                    <td><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
+                @endif
                 </tr>
+                <!-- </tr> -->
                 <tr class="post">
                     <td>{{ $posts->user->username}}</td><!--リレーションでuser.phpのusernameを置くことで情報が取得できる。 -->
                     <td class="posts">{!! nl2br(e($posts->post)) !!}</td>
-
                 </tr>
 
                 <tr class="content">

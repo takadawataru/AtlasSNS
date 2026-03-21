@@ -6,8 +6,12 @@
 <div class=follow_group>
       <h2 class="page-header">Follower List</h2>
   <div class=follow_icon>
-    @foreach($posts as $post)
-      <a href="/post/{{$post->user->id}}/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a>
+    @foreach($followers as $follower)
+    @if($follower->images!='icon1.png')
+      <a href="/post/{{$follower->id}}/otherProfile"><img class="top_icon"  src="{{asset('storage/'.$follower->images)}}" alt=""></a>
+    @else
+      <a href="/post/{{$follower->id}}/otherProfile"><img class="top_icon" src="{{asset('images/icon1.png')}}" alt=""></a>
+    @endif
     @endforeach
   </div>
 </div>
@@ -19,10 +23,10 @@
     <tbody class="top">
 
       <tr>
-        @if(Auth::user()->images!='icon1.png')
+        @if($post->user->images!='icon1.png')
           <td><a href="/otherProfile"><img src="{{asset('storage/'.$post->user->images)}}" alt=""></a></td>
         @else
-          td><img src="{{asset('images/icon1.png')}}" alt=""></td>
+          <td><img src="{{asset('images/icon1.png')}}" alt=""></td>
         @endif
       </tr>
       <tr class="post" >

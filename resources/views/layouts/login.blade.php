@@ -38,7 +38,11 @@
                                 <p class="side_text"><a href="/logout"  class="side_color">ログアウト</a></p>
                             </div>
                         </div>
-                        <img src="{{asset('storage/'.Auth::user()->images)}}" alt="" class="header_icon">
+                        @if(Auth::user()->images!='icon1.png')
+                            <td ><img class="header_icon" src="{{asset('storage/'.Auth::user()->images)}}" alt=""></td>
+                        @else
+                            <td class="header_icon"><img class="header_icon" src="{{asset('images/icon1.png')}}" alt=""></td>
+                        @endif
                     </div>
                 </div>
         </div>
